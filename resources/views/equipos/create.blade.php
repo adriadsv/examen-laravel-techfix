@@ -29,15 +29,39 @@
     <form action="{{ route('equipos.store') }}" method="POST" class="card card-body">
         @csrf
 
-        <div class="mb-3">
-            <label class="form-label">Tipo de equipo</label>
-            <input type="text" name="tipo_equipo" class="form-control" value="{{ old('tipo_equipo') }}" required>
+       <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input
+                type="text"
+                name="telefono"
+                class="form-control"
+                value="{{ old('telefono') }}"
+                inputmode="numeric"
+                pattern="[0-9]{10}"
+                minlength="10"
+                maxlength="10"
+                title="Solo números de 10 dígitos"
+                required
+            >
         </div>
+
 
         <div class="mb-3">
             <label class="form-label">Marca/Modelo</label>
             <input type="text" name="marca_modelo" class="form-control" value="{{ old('marca_modelo') }}" required>
         </div>
+
+        
+            <div class="mb-3">
+                <label class="form-label">Tipo de equipo</label>
+                <input
+                    type="text"
+                    name="tipo_equipo"
+                    class="form-control"
+                    value="{{ old('tipo_equipo') }}"
+                    required
+                >
+            </div>
 
         <div class="mb-3">
             <label class="form-label">Problema reportado</label>
@@ -47,11 +71,6 @@
         <div class="mb-3">
             <label class="form-label">Nombre del cliente</label>
             <input type="text" name="nombre_cliente" class="form-control" value="{{ old('nombre_cliente') }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Teléfono</label>
-            <input type="text" name="telefono" class="form-control" value="{{ old('telefono') }}" required>
         </div>
 
         <div class="mb-3">
@@ -73,3 +92,4 @@
 </div>
 </body>
 </html>
+

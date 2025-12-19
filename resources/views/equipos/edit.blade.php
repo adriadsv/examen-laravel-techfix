@@ -52,8 +52,20 @@
 
         <div class="mb-3">
             <label class="form-label">Teléfono</label>
-            <input type="text" name="telefono" class="form-control" value="{{ old('telefono', $equipo->telefono) }}" required>
+            <input
+                type="text"
+                name="telefono"
+                class="form-control"
+                value="{{ old('telefono') }}"
+                inputmode="numeric"
+                pattern="[0-9]{10}"
+                minlength="10"
+                maxlength="10"
+                title="Solo números de 10 dígitos"
+                required
+            >
         </div>
+
 
         <div class="mb-3">
             <label class="form-label">Estado</label>
@@ -74,4 +86,3 @@
 </div>
 </body>
 </html>
-    

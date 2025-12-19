@@ -24,12 +24,21 @@ class EquipoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'tipo_equipo' => 'required|string|max:255',
-            'marca_modelo' => 'required|string|max:255',
+            'tipo_equipo'        => 'required|string|max:255',
+            'marca_modelo'       => 'required|string|max:255',
             'problema_reportado' => 'required|string',
-            'nombre_cliente' => 'required|string|max:255',
-            'telefono' => 'required|string|max:255',
-            'estado' => 'required|in:recibido,diagnosticando,reparando,listo,entregado',
+            'nombre_cliente'     => 'required|string|max:255',
+            'telefono'           => 'required|regex:/^[0-9]{10}$/',
+            'estado'             => 'required|in:recibido,diagnosticando,reparando,listo,entregado',
+        ], [
+            'tipo_equipo.required' => 'El tipo de equipo es obligatorio.',
+            'marca_modelo.required' => 'La marca/modelo es obligatoria.',
+            'problema_reportado.required' => 'El problema reportado es obligatorio.',
+            'nombre_cliente.required' => 'El nombre del cliente es obligatorio.',
+            'telefono.required' => 'El teléfono es obligatorio.',
+            'telefono.regex' => 'El teléfono debe tener solo números (10 dígitos).',
+            'estado.required' => 'El estado es obligatorio.',
+            'estado.in' => 'El estado seleccionado no es válido.',
         ]);
 
         Equipo::create($data);
@@ -46,12 +55,21 @@ class EquipoController extends Controller
     public function update(Request $request, Equipo $equipo)
     {
         $data = $request->validate([
-            'tipo_equipo' => 'required|string|max:255',
-            'marca_modelo' => 'required|string|max:255',
+            'tipo_equipo'        => 'required|string|max:255',
+            'marca_modelo'       => 'required|string|max:255',
             'problema_reportado' => 'required|string',
-            'nombre_cliente' => 'required|string|max:255',
-            'telefono' => 'required|string|max:255',
-            'estado' => 'required|in:recibido,diagnosticando,reparando,listo,entregado',
+            'nombre_cliente'     => 'required|string|max:255',
+            'telefono'           => 'required|regex:/^[0-9]{10}$/',
+            'estado'             => 'required|in:recibido,diagnosticando,reparando,listo,entregado',
+        ], [
+            'tipo_equipo.required' => 'El tipo de equipo es obligatorio.',
+            'marca_modelo.required' => 'La marca/modelo es obligatoria.',
+            'problema_reportado.required' => 'El problema reportado es obligatorio.',
+            'nombre_cliente.required' => 'El nombre del cliente es obligatorio.',
+            'telefono.required' => 'El teléfono es obligatorio.',
+            'telefono.regex' => 'El teléfono debe tener solo números (10 dígitos).',
+            'estado.required' => 'El estado es obligatorio.',
+            'estado.in' => 'El estado seleccionado no es válido.',
         ]);
 
         $equipo->update($data);
